@@ -60,19 +60,21 @@
 }
 
 
-//Make URL appear in text field, spinner starts animating
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-     myURLTextField.text = [[myWebView.request URL] absoluteString];
-    [activitySpinner startAnimating];
-   
-    
-    //Make title appear in text field
 
-titleLabel.text = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+- (void)webViewDidStartLoad:(UIWebView *)webView {
     
+    [activitySpinner startAnimating];
 }
 //When the page finishes loading, the spinner stops and hides
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    myURLTextField.text = [[myWebView.request URL] absoluteString];
+    
+    
+    
+    //Make title appear in text field
+    
+    titleLabel.text = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    
     [activitySpinner stopAnimating];
 }
 
